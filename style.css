@@ -1,0 +1,1170 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #ff8fb8;
+    --pink-light: #ffd1e0;
+    --white: #ffffff;
+    --glass: rgba(255, 255, 255, 0.10);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #08050a;
+    color: white;
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* ================= BACKGROUND ================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    overflow: hidden;
+    background: #08050a;
+}
+
+.background-photo {
+    position: absolute;
+    inset: -8%;
+    background-image: url("images/foto01.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(18px);
+    transform: scale(1.12);
+    opacity: 0.48;
+
+    transition:
+        background-image 1.5s ease,
+        transform 7s ease,
+        opacity 1.5s ease,
+        filter 1.5s ease;
+
+    animation: backgroundZoom 12s ease-in-out infinite alternate;
+}
+
+.background-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255, 120, 175, 0.18),
+            transparent 45%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(5, 3, 8, 0.58),
+            rgba(5, 3, 8, 0.88)
+        );
+}
+
+@keyframes backgroundZoom {
+
+    from {
+        transform: scale(1.08);
+    }
+
+    to {
+        transform: scale(1.18);
+    }
+}
+
+
+/* ================= PARTICLES ================= */
+
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.5;
+
+    animation:
+        floatParticle linear infinite,
+        sparkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes floatParticle {
+
+    from {
+        transform: translateY(110vh);
+    }
+
+    to {
+        transform: translateY(-10vh);
+    }
+}
+
+@keyframes sparkle {
+
+    from {
+        opacity: 0.15;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 0.9;
+        transform: scale(1.5);
+    }
+}
+
+
+/* ================= SCREEN ================= */
+
+.screen {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    z-index: 20;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* ================= LOADING ================= */
+
+#loadingScreen {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 116, 171, 0.12),
+            transparent 42%
+        );
+}
+
+.loading-content {
+    width: min(430px, 90vw);
+    text-align: center;
+}
+
+.loading-orbit {
+    width: 115px;
+    height: 115px;
+
+    margin: 0 auto 35px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,0.18);
+
+    position: relative;
+
+    animation: orbitRotate 7s linear infinite;
+
+    box-shadow:
+        0 0 40px rgba(255, 100, 160, 0.12),
+        inset 0 0 25px rgba(255, 255, 255, 0.05);
+}
+
+.loading-orbit::before,
+.loading-orbit::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 13px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 143, 184, 0.3);
+}
+
+.loading-orbit::after {
+    inset: -9px;
+
+    border-color: rgba(255,255,255,0.06);
+}
+
+.orbit-heart {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 42px;
+
+    color: var(--pink-light);
+
+    animation:
+        heartPulse 1.5s ease-in-out infinite,
+        counterRotate 7s linear infinite;
+
+    text-shadow:
+        0 0 20px rgba(255, 143, 184, 0.7),
+        0 0 45px rgba(255, 143, 184, 0.35);
+}
+
+@keyframes orbitRotate {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes counterRotate {
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes heartPulse {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+.small-text {
+    font-size: 10px;
+    letter-spacing: 4px;
+    opacity: 0.55;
+    margin-bottom: 15px;
+}
+
+.loading-content h1 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(42px, 12vw, 72px);
+
+    line-height: 0.9;
+
+    font-weight: 400;
+
+    letter-spacing: -2px;
+}
+
+.loading-content h1 span {
+    color: var(--pink-light);
+
+    text-shadow:
+        0 0 30px rgba(255, 143, 184, 0.35);
+}
+
+#loadingText {
+    margin-top: 25px;
+
+    font-size: 13px;
+
+    color: rgba(255,255,255,0.55);
+
+    letter-spacing: 1px;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 3px;
+
+    margin-top: 25px;
+
+    background: rgba(255,255,255,0.10);
+
+    border-radius: 50px;
+
+    overflow: hidden;
+}
+
+#loadingProgress {
+    width: 0%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff76aa,
+            #ffd1e0,
+            white
+        );
+
+    box-shadow:
+        0 0 15px rgba(255, 143, 184, 0.8);
+
+    transition: width 0.2s ease;
+}
+
+.loading-percent {
+    margin-top: 12px;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    opacity: 0.55;
+}
+
+
+/* ================= READY ================= */
+
+.ready-content {
+    width: min(430px, 90vw);
+
+    text-align: center;
+
+    animation: readyAppear 1.3s ease both;
+}
+
+@keyframes readyAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        filter: blur(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+.mini-title {
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: var(--pink-light);
+
+    margin-bottom: 25px;
+}
+
+.ready-content h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(55px, 15vw, 85px);
+
+    line-height: 0.85;
+
+    font-weight: 400;
+}
+
+.ready-content h2 span {
+    color: var(--pink-light);
+
+    font-style: italic;
+
+    text-shadow:
+        0 0 35px rgba(255, 143, 184, 0.35);
+}
+
+.ready-text {
+    margin: 30px auto;
+
+    max-width: 300px;
+
+    line-height: 1.8;
+
+    font-size: 13px;
+
+    color: rgba(255,255,255,0.65);
+}
+
+#openButton,
+.next-button,
+#finalButton,
+#replayButton {
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color: white;
+
+    padding: 14px 24px;
+
+    border-radius: 100px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(15px);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#openButton:hover,
+.next-button:hover,
+#finalButton:hover,
+#replayButton:hover {
+
+    transform: translateY(-4px) scale(1.03);
+
+    background:
+        rgba(255, 143, 184, 0.18);
+
+    box-shadow:
+        0 10px 35px rgba(255, 90, 150, 0.25);
+}
+
+#openButton span {
+    margin-left: 8px;
+
+    color: var(--pink-light);
+}
+
+
+/* ================= STORY ================= */
+
+#story {
+    position: relative;
+
+    z-index: 5;
+}
+
+.story-screen {
+
+    min-height: 100vh;
+
+    padding: 30px;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 35px;
+
+    text-align: center;
+}
+
+.story-screen.active {
+    display: flex;
+
+    animation: sceneEnter 1s ease both;
+}
+
+@keyframes sceneEnter {
+
+    from {
+        opacity: 0;
+        transform: scale(1.05);
+        filter: blur(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+.story-card {
+
+    width: min(500px, 90vw);
+
+    padding: 35px 28px;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.25);
+}
+
+.scene-number {
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: var(--pink-light);
+
+    margin-bottom: 25px;
+}
+
+.story-card h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(38px, 10vw, 58px);
+
+    font-weight: 400;
+
+    margin-bottom: 20px;
+}
+
+.story-card p:not(.scene-number) {
+
+    color: rgba(255,255,255,0.65);
+
+    line-height: 1.9;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+.tiny-heart {
+
+    font-size: 40px;
+
+    color: var(--pink-light);
+
+    margin-bottom: 20px;
+
+    animation: heartPulse 1.5s infinite;
+}
+
+
+/* ================= 3D PHOTO ================= */
+
+.photo-3d-card {
+
+    width: min(300px, 75vw);
+
+    aspect-ratio: 3 / 4;
+
+    position: relative;
+
+    transform-style: preserve-3d;
+
+    transform:
+        perspective(1000px)
+        rotateX(5deg)
+        rotateY(-8deg);
+
+    animation:
+        floatingPhoto 4s ease-in-out infinite;
+
+    filter:
+        drop-shadow(0 30px 35px rgba(0,0,0,0.5));
+}
+
+.photo-3d-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    background: var(--pink);
+
+    border-radius: 25px;
+
+    transform:
+        translateZ(-35px)
+        translate(18px, 18px);
+
+    opacity: 0.25;
+
+    filter: blur(15px);
+}
+
+.photo-3d-card img {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    box-shadow:
+        inset 0 0 30px rgba(255,255,255,0.08),
+        0 0 50px rgba(255, 143, 184, 0.12);
+
+    transform: translateZ(25px);
+
+    display: block;
+}
+
+.photo-label {
+
+    position: absolute;
+
+    left: 15px;
+    bottom: 15px;
+
+    padding: 8px 13px;
+
+    border-radius: 100px;
+
+    background:
+        rgba(0,0,0,0.4);
+
+    backdrop-filter: blur(10px);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    transform: translateZ(40px);
+}
+
+@keyframes floatingPhoto {
+
+    0%, 100% {
+        transform:
+            perspective(1000px)
+            rotateX(5deg)
+            rotateY(-8deg)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            perspective(1000px)
+            rotateX(-4deg)
+            rotateY(8deg)
+            translateY(-14px);
+    }
+}
+
+
+/* ================= MEMORY WORLD ================= */
+
+#memoryWorld {
+
+    min-height: 100vh;
+
+    padding: 90px 18px;
+
+    display: none;
+
+    position: relative;
+}
+
+#memoryWorld.active {
+    display: block;
+
+    animation: sceneEnter 1s ease both;
+}
+
+.memory-header {
+
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+.memory-header p {
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: var(--pink-light);
+
+    margin-bottom: 15px;
+}
+
+.memory-header h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(45px, 12vw, 70px);
+
+    font-weight: 400;
+}
+
+.memory-header span {
+
+    font-size: 12px;
+
+    opacity: 0.45;
+}
+
+
+/* ================= PHOTO WALL ================= */
+
+#photoWall {
+
+    width: min(900px, 100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+
+    perspective: 1200px;
+}
+
+.memory-card {
+
+    position: relative;
+
+    aspect-ratio: 4 / 5;
+
+    cursor: pointer;
+
+    transform-style: preserve-3d;
+
+    opacity: 0;
+
+    transform:
+        translateY(50px)
+        rotateX(15deg)
+        rotateZ(var(--rotation));
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(.2,.8,.2,1);
+}
+
+.memory-card.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        rotateX(0deg)
+        rotateZ(var(--rotation));
+}
+
+.memory-card:nth-child(3n) {
+    grid-column: span 2;
+    aspect-ratio: 16 / 9;
+}
+
+.memory-card-inner {
+
+    position: absolute;
+
+    inset: 0;
+
+    padding: 6px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.28),
+            rgba(255,255,255,0.05)
+        );
+
+    box-shadow:
+        0 25px 50px rgba(0,0,0,0.35);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.memory-card:hover .memory-card-inner {
+
+    transform:
+        translateZ(35px)
+        scale(1.03);
+
+    box-shadow:
+        0 35px 70px rgba(0,0,0,0.5),
+        0 0 35px rgba(255,143,184,0.18);
+}
+
+.memory-card img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 16px;
+
+    display: block;
+}
+
+.memory-number {
+
+    position: absolute;
+
+    left: 15px;
+    bottom: 15px;
+
+    padding: 7px 11px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(0,0,0,0.4);
+
+    backdrop-filter: blur(10px);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+#finalButton {
+
+    display: block;
+
+    margin: 60px auto 0;
+
+    border-color: rgba(255,143,184,0.35);
+}
+
+
+/* ================= FINAL ================= */
+
+#finalScene {
+
+    min-height: 100vh;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px 25px;
+
+    position: relative;
+}
+
+#finalScene.active {
+
+    display: flex;
+
+    animation: sceneEnter 1.5s ease both;
+}
+
+.final-content {
+
+    width: min(500px, 90vw);
+}
+
+.final-small {
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    color: var(--pink-light);
+
+    margin-bottom: 20px;
+}
+
+.final-content h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(40px, 11vw, 65px);
+
+    font-weight: 400;
+
+    line-height: 1;
+}
+
+.final-text {
+
+    margin: 25px auto;
+
+    max-width: 320px;
+
+    line-height: 1.8;
+
+    color: rgba(255,255,255,0.6);
+}
+
+.final-photo {
+
+    width: min(260px, 70vw);
+
+    aspect-ratio: 3 / 4;
+
+    margin: 35px auto;
+
+    padding: 6px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.35),
+            rgba(255,143,184,0.15)
+        );
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,0.5),
+        0 0 60px rgba(255,143,184,0.16);
+
+    transform:
+        perspective(900px)
+        rotateY(-6deg);
+
+    animation:
+        finalFloat 4s ease-in-out infinite;
+}
+
+.final-photo img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    display: block;
+}
+
+@keyframes finalFloat {
+
+    0%, 100% {
+        transform:
+            perspective(900px)
+            rotateY(-6deg)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            perspective(900px)
+            rotateY(6deg)
+            translateY(-12px);
+    }
+}
+
+.final-message {
+
+    max-width: 340px;
+
+    margin: 0 auto 30px;
+
+    line-height: 1.8;
+
+    color: rgba(255,255,255,0.7);
+}
+
+
+/* ================= MODAL ================= */
+
+#photoModal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    background:
+        rgba(5,3,8,0.88);
+
+    backdrop-filter: blur(25px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    padding: 25px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+}
+
+#photoModal.active {
+
+    opacity: 1;
+    visibility: visible;
+}
+
+#closeModal {
+
+    position: absolute;
+
+    top: 25px;
+    right: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+.modal-photo {
+
+    width: min(420px, 85vw);
+
+    max-height: 65vh;
+
+    padding: 6px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.3),
+            rgba(255,143,184,0.15)
+        );
+
+    transform:
+        perspective(1000px)
+        rotateX(5deg);
+
+    animation: modalPhoto 0.6s ease both;
+}
+
+.modal-photo img {
+
+    width: 100%;
+    max-height: 65vh;
+
+    object-fit: contain;
+
+    display: block;
+
+    border-radius: 20px;
+}
+
+@keyframes modalPhoto {
+
+    from {
+        opacity: 0;
+        transform:
+            perspective(1000px)
+            rotateX(15deg)
+            scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            perspective(1000px)
+            rotateX(5deg)
+            scale(1);
+    }
+}
+
+#modalTitle {
+
+    margin-top: 20px;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: var(--pink-light);
+}
+
+#modalText {
+
+    margin-top: 10px;
+
+    max-width: 300px;
+
+    text-align: center;
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    #photoWall {
+        gap: 14px;
+    }
+
+    .memory-card {
+        border-radius: 16px;
+    }
+
+    .memory-card-inner {
+        border-radius: 16px;
+    }
+
+    .memory-card img {
+        border-radius: 12px;
+    }
+
+    .story-card {
+        padding: 30px 22px;
+    }
+
+}

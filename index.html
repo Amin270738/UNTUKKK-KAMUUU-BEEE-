@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Little Story ♡</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BACKGROUND FOTO -->
+    <div class="background">
+        <div class="background-photo" id="backgroundPhoto"></div>
+        <div class="background-overlay"></div>
+    </div>
+
+    <!-- PARTICLES -->
+    <div class="particles" id="particles"></div>
+
+
+    <!-- ================= LOADING ================= -->
+
+    <section id="loadingScreen" class="screen active">
+
+        <div class="loading-content">
+
+            <div class="loading-orbit">
+                <div class="orbit-heart">♡</div>
+            </div>
+
+            <p class="small-text">A LITTLE SOMETHING FOR YOU</p>
+
+            <h1>
+                OUR<br>
+                <span>LITTLE STORY</span>
+            </h1>
+
+            <p id="loadingText">
+                Preparing something special...
+            </p>
+
+            <div class="loading-bar">
+                <div id="loadingProgress"></div>
+            </div>
+
+            <div class="loading-percent">
+                <span id="loadingNumber">0</span>%
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= READY ================= -->
+
+    <section id="readyScreen" class="screen">
+
+        <div class="ready-content">
+
+            <p class="mini-title">✦ SOMETHING FOR YOU ✦</p>
+
+            <h2>
+                Are you<br>
+                <span>ready?</span>
+            </h2>
+
+            <p class="ready-text">
+                Ada sesuatu kecil yang aku buat khusus untuk kamu.
+            </p>
+
+            <button id="openButton">
+                OPEN THE STORY
+                <span>♡</span>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN STORY ================= -->
+
+    <main id="story">
+
+        <!-- SCENE 1 -->
+
+        <section class="story-screen" id="scene1">
+
+            <div class="story-card">
+
+                <p class="scene-number">01 / A LITTLE BEGINNING</p>
+
+                <h2>
+                    Hey...
+                </h2>
+
+                <p>
+                    Kalau kamu sampai di sini,
+                    berarti kamu berhasil menemukan
+                    sesuatu yang aku sembunyikan.
+                </p>
+
+                <button class="next-button" data-next="scene2">
+                    Lanjut →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- SCENE 2 -->
+
+        <section class="story-screen" id="scene2">
+
+            <div class="photo-3d-card">
+
+                <div class="photo-glow"></div>
+
+                <img
+                    src="images/foto01.jpg"
+                    alt="Memory 01"
+                >
+
+                <div class="photo-label">
+                    MEMORY 01
+                </div>
+
+            </div>
+
+            <div class="story-card">
+
+                <p class="scene-number">02 / ONE LITTLE MEMORY</p>
+
+                <h2>
+                    Ini baru satu...
+                </h2>
+
+                <p>
+                    Tapi ternyata ada banyak sekali
+                    momen yang ingin aku simpan.
+                </p>
+
+                <button class="next-button" data-next="scene3">
+                    Masih ada lagi →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- SCENE 3 -->
+
+        <section class="story-screen" id="scene3">
+
+            <div class="story-card">
+
+                <p class="scene-number">03 / FOR YOU</p>
+
+                <h2>
+                    Kalau hari ini terasa berat...
+                </h2>
+
+                <p>
+                    Kamu nggak harus selalu kuat.
+                    Istirahat sebentar juga nggak apa-apa.
+                    Jangan lupa, kamu sudah melewati
+                    banyak hal sampai sejauh ini.
+                </p>
+
+                <div class="tiny-heart">
+                    ♡
+                </div>
+
+                <button class="next-button" data-next="memoryIntro">
+                    Aku punya sesuatu lagi →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- MEMORY INTRO -->
+
+        <section class="story-screen" id="memoryIntro">
+
+            <div class="story-card">
+
+                <p class="scene-number">04 / OUR MEMORIES</p>
+
+                <h2>
+                    Kalau satu foto
+                    bisa menyimpan cerita...
+                </h2>
+
+                <p>
+                    Bayangkan kalau ada
+                    lebih dari 30 cerita.
+                </p>
+
+                <button class="next-button" data-next="memoryWorld">
+                    Enter our memories ✦
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- MEMORY WORLD -->
+
+        <section id="memoryWorld">
+
+            <div class="memory-header">
+
+                <p>✦ OUR LITTLE UNIVERSE ✦</p>
+
+                <h2>
+                    Our Memories
+                </h2>
+
+                <span>
+                    30 little moments
+                </span>
+
+            </div>
+
+            <div id="photoWall"></div>
+
+            <button id="finalButton">
+                There's one more thing... ♡
+            </button>
+
+        </section>
+
+
+        <!-- FINAL -->
+
+        <section id="finalScene">
+
+            <div class="final-content">
+
+                <p class="final-small">
+                    30 PHOTOS
+                </p>
+
+                <h2>
+                    30 little memories.
+                </h2>
+
+                <p class="final-text">
+                    And somehow,
+                    they all became
+                    little pieces of a story.
+                </p>
+
+                <div class="final-photo">
+                    <img
+                        src="images/foto30.jpg"
+                        alt="Our favorite memory"
+                    >
+                </div>
+
+                <p class="final-message">
+                    Semoga kamu selalu ingat
+                    kalau kamu berharga,
+                    kamu hebat,
+                    dan kamu pantas mendapatkan
+                    banyak hal baik. ♡
+                </p>
+
+                <button id="replayButton">
+                    Replay our story ↻
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= PHOTO MODAL ================= -->
+
+    <div id="photoModal">
+
+        <button id="closeModal">
+            ×
+        </button>
+
+        <div class="modal-photo">
+
+            <img id="modalImage" src="" alt="Memory">
+
+        </div>
+
+        <p id="modalTitle">
+            MEMORY
+        </p>
+
+        <p id="modalText">
+            One little moment worth remembering.
+        </p>
+
+    </div>
+
+
+    <!-- MUSIC -->
+
+    <audio
+        id="backgroundMusic"
+        src="music/lagu.mp3"
+        loop>
+    </audio>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
